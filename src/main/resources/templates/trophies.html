@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-shield-fill"></i> Klub</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub}" class="nav-link">O klubie</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/trofea}" class="nav-link active">Trofea</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/legendy}" class="nav-link">Legendy</a>
+            </li>
+        </ul>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/medal.svg}" alt="Trofeum za mistrzostwo Polski">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Mistrzostwo Polski (6x)</h5>
+                        <p class="card-text">Sezon 26, 37, 39, 40, 41, 45</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/medal.svg}" alt="Trofeum za wicemistrzostwo Polski">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">V-ce Mistrzostwo Polski (8x)</h5>
+                        <p class="card-text">Sezon 22, 27, 28, 29, 30, 31, 38, 46</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/medal.svg}" alt="Trofeum za Puchar Polski">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Puchar Polski (7x)</h5>
+                        <p class="card-text">Sezon 25, 29, 31, 39, 40, 41, 45</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/medal.svg}" alt="Trofeum za mistrzostwo Australii">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Mistrzostwo Australii (1x)</h5>
+                        <p class="card-text">Sezon 42</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/medal.svg}" alt="Trofeum za wicemistrzostwo Australii">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">V-ce Mistrzostwo Australii (2x)</h5>
+                        <p class="card-text">Sezon 43, 44</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>
+

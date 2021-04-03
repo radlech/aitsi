@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-calendar-week-fill"></i> Terminarz</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/terminarz}" th:class="${type.equals('ALL') ? 'nav-link active' : 'nav-link'}">Pełny</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/terminarz/ekstraklasa}" th:class="${type.equals('EKS') ? 'nav-link active' : 'nav-link'}">Ekstraklasa</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/terminarz/puchar}" th:class="${type.equals('PP') ? 'nav-link active' : 'nav-link'}">Puchar Polski</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/terminarz/liga_kontynentalna}" th:class="${type.equals('LK') ? 'nav-link active' : 'nav-link'}">Liga Kontynentalna</a>
+            </li>
+        </ul>
+
+        <table th:if="${type.equals('ALL')}" class="table">
+            <thead class="table-light">
+            <tr>
+                <th scope="col">Rozgrywki</th>
+                <th scope="col">Termin</th>
+                <th scope="col">Przeciwnik</th>
+                <th scope="col">Wynik</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="game : ${games}">
+                <td>
+                    <span th:if="${game.type.equals('EKS')}">Ekstraklasa</span>
+                    <span th:if="${game.type.equals('PP')}">Puchar Polski</span>
+                    <span th:if="${game.type.equals('LK')}">Liga Kontynentalna</span>
+                </td>
+                <td th:text="${game.date}"></td>
+                <td th:text="${game.rival}"></td>
+                <td>
+                    <th:block th:if="${game.scored != null && game.missed != null}">
+                        <span th:if="${game.scored > game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-success"></span>
+                        <span th:if="${game.scored == game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-warning"></span>
+                        <span th:if="${game.scored < game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-danger"></span>
+                    </th:block>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:if="${!type.equals('ALL')}" class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <th:block th:if="${type.equals('EKS')}">
+                            <h5>Ekstraklasa</h5>
+                            <p>Najwyższa klasa rozgrywkowa w Polsce</p>
+                            <img th:src="@{/images/cup-2.png}" class="card-img-top" alt="Trofeum Ekstraklasy">
+                        </th:block>
+                        <th:block th:if="${type.equals('PP')}">
+                            <h5>Puchar Polski</h5>
+                            <p>Krajowy puchar rozpoczynający się fazą grupową i kończący play-offami</p>
+                            <img th:src="@{/images/cup-1.jpg}" class="card-img-top" alt="Trofeum Pucharu Polski">
+                        </th:block>
+                        <th:block th:if="${type.equals('LK')}">
+                            <h5>Liga Kontynentalna</h5>
+                            <p>Rozgrywki dla czołowych drużyn europejskich</p>
+                            <img th:src="@{/images/cup-3.jpg}" class="card-img-top" alt="Trofeum Ligi Kontynentalnej">
+                        </th:block>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card">
+                        <table class="table">
+                            <thead class="table-light">
+                            <tr>
+                                <th scope="col">Termin</th>
+                                <th scope="col">Przeciwnik</th>
+                                <th scope="col">Wynik</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="game : ${games}">
+                                <td th:text="${game.date}"></td>
+                                <td th:text="${game.rival}"></td>
+                                <td>
+                                    <th:block th:if="${game.scored != null && game.missed != null}">
+                                        <span th:if="${game.scored > game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-success"></span>
+                                        <span th:if="${game.scored == game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-warning"></span>
+                                        <span th:if="${game.scored < game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-danger"></span>
+                                    </th:block>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

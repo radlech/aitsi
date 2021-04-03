@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-shield-fill"></i> Klub</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub}" class="nav-link active">O klubie</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/trofea}" class="nav-link">Trofea</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/legendy}" class="nav-link">Legendy</a>
+            </li>
+        </ul>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <h5 class="center">Inver</h5>
+                    <p class="text-center">Rok założenia: 2007</p>
+                    <img th:src="@{/images/inver.png}" class="card-img-top center max-width-200" alt="Herb klubu Inver">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <h5>Menadżerowie</h5>
+                    <p>
+                        Inver to jeden z najstarszych polskich klubów w przeglądarkowej grze FootStar.
+                        Został założony w 2007 roku przez Patryka Altmana. W kolejnych latach drużyną
+                        kierowali m.in. Levy Dowgird, Eryk Sadorski i Roman Dziwisz.
+                        W maju 2017 klub został rozwiązany, lecz jeszcze w sierpniu tego samego roku
+                        został reaktywowany i od tego momentu kieruje nim Bartek Korowajczuk.
+                    </p>
+                    <h5>Rozgrywki</h5>
+                    <p>
+                        Drużyna od początku swojego istnienia występowała w polskich rozgrywkach ligowych,
+                        najczęściej w jednej z dwóch najwyższych lig, wielokrotnie reprezentując Polskę
+                        w europejskich rozgrywkach klubowych. Zespół zaliczył także krótki okres
+                        trzech sezonów w lidze australijskiej i rozgrywkach strefy Azja-Afryka-Oceania.
+                    </p>
+                    <h5>Szkolenie</h5>
+                    <p>
+                        Inver jest klubem słynącym ze szkolenia talentów - oprócz pierwszej drużyny
+                        dysponuje także drużynami Inver U19, Inver B oraz Inver B U19, zapewniającymi
+                        zróżnicowany trening dla przyszłych gwiazd gry FootStar. W przeszłości klub
+                        posiadał również kluby satelickie w Egipcie, RPA oraz Czarnogórze.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

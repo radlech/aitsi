@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-shield-fill"></i> Klub</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub}" class="nav-link">O klubie</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/trofea}" class="nav-link">Trofea</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/klub/legendy}" class="nav-link active">Legendy</a>
+            </li>
+        </ul>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/legend.svg}"  alt="Roman Dziwisz">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Roman Dziwisz</h5>
+                        <p class="card-text">Lorem ipsum coś tam coś tam...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/legend.svg}"  alt="Tomek Cezar">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Tomek Cezar</h5>
+                        <p class="card-text">Lorem ipsum coś tam coś tam...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/legend.svg}"  alt="Roland Ałaszkiewicz">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Roland Ałaszkiewicz</h5>
+                        <p class="card-text">Lorem ipsum coś tam coś tam...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/legend.svg}"  alt="Bartosz Lewandowski">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Bartosz Lewandowski</h5>
+                        <p class="card-text">Lorem ipsum coś tam coś tam...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-1">
+                    <img th:src="@{/images/legend.svg}"  alt="Longin Kuchta">
+                </div>
+                <div class="col-sm-11">
+                    <div class="card-body">
+                        <h5 class="card-title">Longin Kuchta</h5>
+                        <p class="card-text">Lorem ipsum coś tam coś tam...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

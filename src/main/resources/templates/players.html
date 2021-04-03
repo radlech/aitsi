@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-people-fill"></i> Zawodnicy</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/zawodnicy}" th:class="${position.equals('ALL') ? 'nav-link active' : 'nav-link'}">Wszyscy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/zawodnicy/bramkarze}" th:class="${position.equals('BR') ? 'nav-link active' : 'nav-link'}">Bramkarze</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/zawodnicy/obroncy}" th:class="${position.equals('OBR') ? 'nav-link active' : 'nav-link'}">Obrońcy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/zawodnicy/pomocnicy}" th:class="${position.equals('POM') ? 'nav-link active' : 'nav-link'}">Pomocnicy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/zawodnicy/napastnicy}" th:class="${position.equals('NAP') ? 'nav-link active' : 'nav-link'}">Napastnicy</a>
+            </li>
+        </ul>
+
+        <th:block th:if="${position.equals('ALL')}">
+            <div class="my-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <img th:src="@{/images/team.jpg}" class="card-img-top" alt="Zdjęcie drużyny">
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <table class="table">
+                                    <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">Pozycja</th>
+                                        <th scope="col">Zawodnik</th>
+                                        <th scope="col">Wiek</th>
+                                        <th scope="col">Skille</th>
+                                        <th scope="col">Exp</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="player : ${players}" th:if="${player.position.equals('BR')}">
+                                        <td>Bramkarz</td>
+                                        <td th:text="${player.name}"></td>
+                                        <td th:text="${player.age}"></td>
+                                        <td th:text="${player.skills}"></td>
+                                        <td th:text="${player.exp}"></td>
+                                    </tr>
+                                    <tr th:each="player : ${players}" th:if="${player.position.equals('OBR')}">
+                                        <td>Obrońca</td>
+                                        <td th:text="${player.name}"></td>
+                                        <td th:text="${player.age}"></td>
+                                        <td th:text="${player.skills}"></td>
+                                        <td th:text="${player.exp}"></td>
+                                    </tr>
+                                    <tr th:each="player : ${players}" th:if="${player.position.equals('POM')}">
+                                        <td>Pomocnik</td>
+                                        <td th:text="${player.name}"></td>
+                                        <td th:text="${player.age}"></td>
+                                        <td th:text="${player.skills}"></td>
+                                        <td th:text="${player.exp}"></td>
+                                    </tr>
+                                    <tr th:each="player : ${players}" th:if="${player.position.equals('NAP')}">
+                                        <td>Napastnik</td>
+                                        <td th:text="${player.name}"></td>
+                                        <td th:text="${player.age}"></td>
+                                        <td th:text="${player.skills}"></td>
+                                        <td th:text="${player.exp}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+        <th:block th:if="${!position.equals('ALL')}">
+            <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
+                <div th:each="player : ${players}" class="col">
+                    <div class="card h-100">
+                        <img th:src="@{/images/player.png}" class="card-img-top" th:alt="${player.name + ' - zdjęcie'}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${player.name}"></h5>
+                            <p class="card-text">
+                                Wiek: <strong><span th:text="${player.age}"></span></strong><br>
+                                Skille: <strong><span th:text="${player.skills}"></span></strong><br>
+                                Exp: <strong><span th:text="${player.exp}"></span></strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

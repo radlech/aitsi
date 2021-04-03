@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-info-circle-fill"></i> Informacje o stronie</h1>
+
+        <div class="card">
+            <h5>Użyte technologie</h5>
+            <p>
+                Java, SpringBoot, H2, Thymeleaf, HTML5, CSS, Bootstrap, JavaScript
+            </p>
+            <h5>Nawigacja</h5>
+            <p>
+                W serwisie występuje nawigacja globalna i lokalna.
+                Globalna znajduje się na górnym pasku i kieruje do stron Klub, Zawodnicy, Terminarz oraz do Panelu Administratora.
+                Gdy użytkownik jest zalogowany na tym pasku pojawia się także przycisk służący do wylogowania.
+                Ze względów estetycznych link do niniejszej podstrony nie został umieszczony na górnym pasku, lecz w stopce.
+                Podczas odwiedzania poszczególnych zakładek użytkownik ma możliwość korzystania z nawigacji lokalnej.
+                Wyświetla się ona jako poziomy pasek poniżej głównego tytułu zakładki (np. dla zakładki Klub mamy możliwość nawigacji do podstron O klubie, Trofea, Legendy).
+                Przyciski nawigujące do głównych zakładek (Klub, Zawodnicy, Terminarz) zostały także umieszczone na stronie głównej.
+            </p>
+            <h5>Spełnienie wymagań</h5>
+            <p>
+                Serwis został zrealizowany na bazie HTML5, wykorzystano w nim formatowanie przy użyciu CSS.
+                Serwis poprawnie współpracuje z różnymi przeglądarkami i urządzeniami.
+                Z myślą o osobach niepełnosprawnych możliwa jest nawigacja przy użyciu oprogramowania czytającego
+                - wszystkie obrazki mają teksty alternatywne.
+                Spośród technologii przedstawionych na wykładzie użyto m.in. skryptów po stronie serwera i bazy danych.
+                System nawigacji jest dobrze przemyślany i spójny, a serwis oferuje wygodny dostęp do poszukiwanych treści.
+            </p>
+            <h5>Autor</h5>
+            <p>
+                Niniejszy serwis jest projektem z przedmiotu AiTSI, a jego autorem jest Radosław Lechowicz, student wydziału EiTI Politechniki Warszawskiej.
+            </p>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

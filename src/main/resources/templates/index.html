@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+    <!-- PAGE CONTENT START -->
+
+        <div class="container py-5" id="featured-3">
+            <h2 class="pb-2 border-bottom">Witaj na stronie INVER - polskiego klubu w przeglądarkowej grze FootStar!</h2>
+            <div class="row g-5 py-5">
+                <div class="feature col-md-4">
+                    <div class="feature-icon bg-dark bg-gradient">
+                        <img th:src="@{/images/shield-shaded.svg}" class="bi" alt="Klub"/>
+                    </div>
+                    <h2>Klub</h2>
+                    <p>Dowiedz się więcej o klubie, zdobytych trofeach i legendarnych zawodnikach.</p>
+                    <a th:href="@{/klub}" class="btn btn-dark btn-sm"><i class="bi bi-arrow-right-square"></i> Kliknij tutaj</a>
+                </div>
+                <div class="feature col-md-4">
+                    <div class="feature-icon bg-dark bg-gradient">
+                        <img th:src="@{/images/people-fill.svg}" class="bi" alt="Zawodnicy"/>
+                    </div>
+                    <h2>Zawodnicy</h2>
+                    <p>Poznaj zawodników stanowiących o naszej sile w obecnym sezonie.</p>
+                    <a th:href="@{/zawodnicy}" class="btn btn-dark btn-sm"><i class="bi bi-arrow-right-square"></i> Kliknij tutaj</a>
+                </div>
+                <div class="feature col-md-4">
+                    <div class="feature-icon bg-dark bg-gradient">
+                        <img th:src="@{/images/calendar-week-fill.svg}" class="bi" alt="Terminarz"/>
+                    </div>
+                    <h2>Terminarz</h2>
+                    <p>Sprawdź kiedy i z kim rywalizujemy.</p>
+                    <a th:href="@{/terminarz}" class="btn btn-dark btn-sm"><i class="bi bi-arrow-right-square"></i> Kliknij tutaj</a>
+                </div>
+            </div>
+        </div>
+
+    <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

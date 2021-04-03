@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+</head>
+<body class="d-flex flex-column h-100">
+<th:block th:include="include/header"/>
+<main class="flex-shrink-0">
+    <div class="container">
+        <!-- PAGE CONTENT START -->
+
+        <h1 class="mt-5"><i class="bi bi-sliders"></i> Panel Administratora</h1>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a th:href="@{/admin}" class="nav-link" aria-selected="false">Zawodnicy</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" aria-selected="true">Terminarz</a>
+            </li>
+        </ul>
+
+        <div class="my-container">
+            <h3><i class="bi bi-calendar-week-fill"></i> Terminarz</h3>
+            <div th:if="${param.deleteGameError}" class="alert alert-danger" role="alert">Wystąpił błąd w czasie usuwania terminu!</div>
+            <div th:if="${param.saveGameError}" class="alert alert-danger" role="alert">Wystąpił błąd w czasie zapisywania terminu!</div>
+            <div th:if="${param.deleteGameOk}" class="alert alert-success" role="alert">Usunięcie terminu zakończyło się sukcesem.</div>
+            <div th:if="${param.saveGameOk}" class="alert alert-success" role="alert">Zapis terminu zakończył się sukcesem.</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <form th:action="@{/admin/game}" method="post">
+                                <input type="hidden" name="id" th:value="${game?.id}"/>
+                                <div class="h5 mb-3" th:text="${game == null ? 'Dodaj termin' : 'Edytuj termin'}"></div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text width-100">Rozgrywki</span>
+                                    <select class="form-select" name="type" required>
+                                        <option value="">Rozgrywki</option>
+                                        <option th:value="EKS" th:selected="${game?.type?.equals('EKS')}">Ekstraklasa</option>
+                                        <option th:value="PP" th:selected="${game?.type?.equals('PP')}">Puchar Polski</option>
+                                        <option th:value="LK" th:selected="${game?.type?.equals('LK')}">Liga Kontynentalna</option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text width-100">Termin</span>
+                                    <input class="form-control" type="date" name="date" th:value="${game?.date}" required/>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text width-100">Przeciwnik</span>
+                                    <input class="form-control" type="text" name="rival" th:value="${game?.rival}" maxlength="32" required/>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text width-100">Wynik</span>
+                                    <input class="form-control" type="number" name="scored" th:value="${game?.scored}" min="0" max="99" step="1" required/>
+                                    <span class="input-group-text">:</span>
+                                    <input class="form-control" type="number" name="missed" th:value="${game?.missed}" min="0" max="99" step="1" required/>
+                                </div>
+                                <div class="mb-3 float-right">
+                                    <a th:href="@{/admin/games}" class="btn width-80 btn-sm btn-secondary">Wyczyść</a>
+                                    <button th:text="${game == null ? 'Dodaj' : 'Zapisz'}" type="submit" class="btn width-80 btn-sm btn-success"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="h5 mb-3">Lista meczów</div>
+                            <table class="table">
+                                <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Rozgrywki</th>
+                                    <th scope="col">Termin</th>
+                                    <th scope="col">Przeciwnik</th>
+                                    <th scope="col">Wynik</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="game : ${games}">
+                                    <td>
+                                        <span th:if="${game.type.equals('EKS')}">Ekstraklasa</span>
+                                        <span th:if="${game.type.equals('PP')}">Puchar Polski</span>
+                                        <span th:if="${game.type.equals('LK')}">Liga Kontynentalna</span>
+                                    </td>
+                                    <td th:text="${game.date}"></td>
+                                    <td th:text="${game.rival}"></td>
+                                    <td>
+                                        <th:block th:if="${game.scored != null && game.missed != null}">
+                                            <span th:if="${game.scored > game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-success"></span>
+                                            <span th:if="${game.scored == game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-warning"></span>
+                                            <span th:if="${game.scored < game.missed}" th:text="${game.scored + ':' + game.missed}" class="badge bg-danger"></span>
+                                        </th:block>
+                                    </td>
+                                    <td><a th:href="@{'/admin/game/'+${game.id}}" class="btn width-80 btn-sm btn-light">Edytuj</a></td>
+                                    <td><a th:href="@{'/admin/game/delete/'+${game.id}}" class="btn width-80 btn-sm btn-danger">Usuń</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT END -->
+    </div>
+</main>
+<th:block th:include="include/footer"/>
+<th:block th:include="include/js"/>
+</body>
+</html>

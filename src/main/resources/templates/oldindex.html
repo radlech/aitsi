@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AiTSI</title>
+    <th:block th:include="include/css"/>
+</head>
+<body>
+<div th:if="${message}">
+    <span th:text="${message}"></span>
+</div>
+<div th:if="${newsList}">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Author</th>
+            <th>Text</th>
+            <th>Visible</th>
+        </tr>
+        <tr th:each="news : ${newsList}">
+            <td th:text="${news.id}"></td>
+            <td th:text="${news.author}"></td>
+            <td th:text="${news.text}"></td>
+            <td th:text="${news.visible}"></td>
+        </tr>
+    </table>
+</div>
+<th:block th:include="include/js"/>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Radosław Lechowicz">
+    <title>INVER - polski klub FootStar</title>
+    <th:block th:include="include/css"/>
+    <link th:href="@{/css/login-page.css}" rel="stylesheet" media="all"/>
+</head>
+<body class="text-center">
+<main class="form-signin">
+    <form th:action="@{/login}" method="post" autocomplete="off">
+        <h1 class="h3 mb-3 fw-normal">Panel Administratora</h1>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Nieprawidłowy login i/lub hasło
+        </div>
+        <div th:if="${isUserLoggedIn}" class="alert alert-danger" role="alert">
+            Jesteś już zalogowany.
+        </div>
+        <div th:if="${!isUserLoggedIn}" class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" name="login" placeholder="Login">
+            <label for="floatingInput">Login</label>
+        </div>
+        <div th:if="${!isUserLoggedIn}" class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Hasło">
+            <label for="floatingPassword">Hasło</label>
+        </div>
+        <button th:if="${!isUserLoggedIn}" class="w-100 btn btn-lg btn-dark" type="submit">Zaloguj się</button>
+        <a th:if="${isUserLoggedIn}" th:href="@{/admin}" class="w-100 btn btn-lg btn-dark" type="submit">Przejdź do Panelu Administratora</a>
+        <a th:href="@{/}">Kliknij aby powrócić do strony głównej</a>
+    </form>
+</main>
+<th:block th:include="include/js"/>
+</body>
+</html>
